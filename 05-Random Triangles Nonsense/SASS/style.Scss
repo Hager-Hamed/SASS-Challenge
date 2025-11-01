@@ -1,0 +1,73 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #cfcfcf;
+}
+
+$baseSize: 12px;
+$strokeW: 8px;
+$numOfTriangles: 13;
+$size: $baseSize + $strokeW*2 * ($numOfTriangles - 1);
+
+$triangleAT: 4s;
+$triangleStagger: $triangleAT / $numOfTriangles * 0.3;
+
+.base-triangle {
+  overflow: visible;
+  z-index: -1000;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  
+  symbol {
+    overflow: visible;
+  }
+  
+  path {
+    fill: none;
+    stroke: #fe0000;
+    stroke-width: $strokeW;
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+.triangles-cont {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $size;
+  height: $size;
+  margin-left: $size/-2;
+  margin-top: $size/-2;
+  perspective: 1000px;
+}
+
+.triangle {
+  overflow: visible;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 50%;
+  
+  @for $i from 1 through $numOfTriangles {
+    &:nth-child(#{$i}) {
+      $_size: $size - ($i - 1) * $strokeW*2;
+      width: $_size;
+      height: $_size;
+      margin-left: $_size/-2;
+      margin-top: $_size/-2;
+      animation: triangleRotation $triangleAT $triangleStagger * $i infinite ease-out;
+    }
+  }
+}
+
+@keyframes triangleRotation {
+  70%, 100% {
+    transform: rotateX(-360deg);
+  }
+}
