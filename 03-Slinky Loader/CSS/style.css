@@ -1,0 +1,164 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@keyframes contMovement {
+  5% {
+    transform: none;
+  }
+  50% {
+    transform: translateX(-96px);
+  }
+  95%, 100% {
+    transform: translateX(-192px);
+  }
+}
+@keyframes contRotate {
+  33% {
+    transform: rotate(0);
+  }
+  41% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(0);
+  }
+  83% {
+    transform: rotate(0);
+  }
+  91% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+.slinky-loader {
+  position: relative;
+  width: 96px;
+  height: 112px;
+  animation: contMovement 2.5s infinite;
+  will-change: transform;
+}
+.slinky-loader__rotator {
+  position: relative;
+  height: 100%;
+  animation: contRotate 2.5s infinite;
+  transform-origin: 100% 100%;
+  will-change: transform;
+}
+.slinky-loader__bar {
+  width: 100%;
+  height: 16px;
+  will-change: transform;
+}
+.slinky-loader__bar:not(:last-child) {
+  margin-bottom: 8px;
+}
+@keyframes barMovement1 {
+  0% {
+    transform: none;
+  }
+  37% {
+    transform: rotate(180deg);
+  }
+  37.0001%, 63.0001% {
+    transform: translateX(96px) scaleX(-1) rotate(180deg);
+  }
+  95%, 100% {
+    transform: translateX(96px) scaleX(-1) rotate(0);
+  }
+}
+.slinky-loader__bar:nth-child(1) {
+  background: #ff7bac;
+  transform-origin: 100% 56px;
+  animation: barMovement1 2.5s infinite cubic-bezier(0.55, 0.2, 0.29, 1.24);
+}
+@keyframes barMovement2 {
+  2% {
+    transform: none;
+  }
+  39% {
+    transform: rotate(180deg);
+  }
+  39.0001%, 61.0001% {
+    transform: translateX(96px) scaleX(-1) rotate(180deg);
+  }
+  93%, 100% {
+    transform: translateX(96px) scaleX(-1) rotate(0);
+  }
+}
+.slinky-loader__bar:nth-child(2) {
+  background: #ff1d25;
+  transform-origin: 100% 32px;
+  animation: barMovement2 2.5s infinite cubic-bezier(0.55, 0.2, 0.29, 1.24);
+}
+@keyframes barMovement3 {
+  4% {
+    transform: none;
+  }
+  41% {
+    transform: rotate(180deg);
+  }
+  41.0001%, 59.0001% {
+    transform: translateX(96px) scaleX(-1) rotate(180deg);
+  }
+  91%, 100% {
+    transform: translateX(96px) scaleX(-1) rotate(0);
+  }
+}
+.slinky-loader__bar:nth-child(3) {
+  background: #ff931e;
+  transform-origin: 100% 8px;
+  animation: barMovement3 2.5s infinite cubic-bezier(0.55, 0.2, 0.29, 1.24);
+}
+@keyframes barMovement4 {
+  6% {
+    transform: none;
+  }
+  43% {
+    transform: rotate(180deg);
+  }
+  43.0001%, 57.0001% {
+    transform: translateX(96px) scaleX(-1) rotate(180deg);
+  }
+  89%, 100% {
+    transform: translateX(96px) scaleX(-1) rotate(0);
+  }
+}
+.slinky-loader__bar:nth-child(4) {
+  background: #7ac943;
+  transform-origin: 100% -16px;
+  animation: barMovement4 2.5s infinite cubic-bezier(0.55, 0.2, 0.29, 1.24);
+}
+@keyframes barMovement5 {
+  8% {
+    transform: none;
+  }
+  45% {
+    transform: rotate(180deg);
+  }
+  45.0001%, 55.0001% {
+    transform: translateX(96px) scaleX(-1) rotate(180deg);
+  }
+  87%, 100% {
+    transform: translateX(96px) scaleX(-1) rotate(0);
+  }
+}
+.slinky-loader__bar:nth-child(5) {
+  background: #3fa9f5;
+  transform-origin: 100% -40px;
+  animation: barMovement5 2.5s infinite cubic-bezier(0.55, 0.2, 0.29, 1.24);
+}
+
+/*# sourceMappingURL=style.css.map */
