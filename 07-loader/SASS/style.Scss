@@ -1,0 +1,85 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #E45353;
+}
+
+$numOfBalls: 8;
+$steps: $numOfBalls +  1;
+$step: 100% / $steps;
+$degPerBall: 360deg / $numOfBalls;
+$bigSize: 48px;
+$smallSize: 36px;
+$transY: -120px;
+$animTime: 2.7s;
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $bigSize;
+  height: $bigSize;
+  margin-left: $bigSize/-2;
+  margin-top: $bigSize/-2;
+  filter: url("#goo");
+  border-radius: 50%;
+  
+  &__big-ball,
+  &__ball {
+    filter: url("#goo");
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  &__big-ball {
+    width: 100%;
+    height: 100%;
+    animation: bigBallAnim $animTime ease-in-out infinite;
+  }
+  
+  &__ball {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: $smallSize;
+    height: $smallSize;
+    margin-left: $smallSize/-2;
+    margin-top: $smallSize/-2;
+    
+    @for $i from 1 through $numOfBalls {
+      &:nth-child(#{$i}) {
+        transform: rotate(360deg/$numOfBalls * $i) translateY($transY); 
+      }
+    }
+  }
+}
+
+@keyframes bigBallAnim {
+  @for $i from 1 through $steps {
+    #{$step * $i} {
+      @if $i == $steps {
+        transform: rotate(-$degPerBall * ($i - 2)) translate3d(0,0,0);
+      } @else {
+        transform: rotate(-$degPerBall * ($i - 1)) translate3d(0,$transY,0);
+      }
+    }
+  }
+}
+
+.original {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.check-out {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #fff;
+}
